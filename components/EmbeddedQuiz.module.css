@@ -1,0 +1,176 @@
+.quizContainer {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, rgba(96, 165, 250, 0.1) 0%, rgba(167, 139, 250, 0.1) 100%);
+    border: 2px solid rgba(96, 165, 250, 0.3);
+    border-radius: 16px;
+    transition: all 0.3s ease;
+}
+
+.quizContainer.correct {
+    border-color: #22c55e;
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(34, 197, 94, 0.05) 100%);
+}
+
+.quizContainer.incorrect {
+    border-color: #ef4444;
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(239, 68, 68, 0.05) 100%);
+}
+
+.quizHeader {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    color: #60a5fa;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.question {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0 0 1.25rem;
+    line-height: 1.5;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.option {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    background: var(--surface);
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: left;
+    width: 100%;
+}
+
+.option:hover:not(:disabled) {
+    border-color: #60a5fa;
+    background: rgba(96, 165, 250, 0.1);
+    transform: translateX(4px);
+}
+
+.selectedOption {
+    border-color: #60a5fa;
+    background: rgba(96, 165, 250, 0.15);
+}
+
+.correctOption {
+    border-color: #22c55e !important;
+    background: rgba(34, 197, 94, 0.15) !important;
+}
+
+.incorrectOption {
+    border-color: #ef4444 !important;
+    background: rgba(239, 68, 68, 0.15) !important;
+}
+
+.disabledOption {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.optionLabel {
+    display: grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    background: rgba(96, 165, 250, 0.2);
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: #60a5fa;
+    flex-shrink: 0;
+}
+
+.correctOption .optionLabel {
+    background: rgba(34, 197, 94, 0.3);
+    color: #22c55e;
+}
+
+.incorrectOption .optionLabel {
+    background: rgba(239, 68, 68, 0.3);
+    color: #ef4444;
+}
+
+.optionText {
+    flex: 1;
+    font-size: 1rem;
+    color: var(--text);
+}
+
+.correctIcon {
+    color: #22c55e;
+    flex-shrink: 0;
+}
+
+.incorrectIcon {
+    color: #ef4444;
+    flex-shrink: 0;
+}
+
+.feedback {
+    margin-top: 1.25rem;
+    padding: 1rem 1.25rem;
+    border-radius: 12px;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.feedbackCorrect {
+    background: rgba(34, 197, 94, 0.15);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.feedbackIncorrect {
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.feedbackHeader {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.feedbackCorrect .feedbackHeader {
+    color: #22c55e;
+}
+
+.feedbackIncorrect .feedbackHeader {
+    color: #ef4444;
+}
+
+.explanation {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--text);
+    line-height: 1.5;
+    opacity: 0.9;
+}

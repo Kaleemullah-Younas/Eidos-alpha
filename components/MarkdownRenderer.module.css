@@ -1,0 +1,166 @@
+.markdownContainer {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text);
+}
+
+.markdownContainer :global(.katex-display) {
+    margin: 1em 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+/* Headings */
+.h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin: 1.5rem 0 1rem;
+    color: var(--text);
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 0.5rem;
+}
+
+.h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 1.25rem 0 0.75rem;
+    color: var(--text);
+}
+
+.h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 1rem 0 0.5rem;
+    color: var(--text);
+}
+
+/* Code Blocks */
+.codeBlock {
+    margin: 1rem 0 !important;
+    border-radius: 8px !important;
+    font-size: 0.85rem !important;
+}
+
+.inlineCode {
+    background: rgba(96, 165, 250, 0.15);
+    color: #60a5fa;
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-family: 'Fira Code', 'Consolas', monospace;
+    font-size: 0.9em;
+}
+
+/* Tables */
+.tableWrapper {
+    overflow-x: auto;
+    margin: 1rem 0;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.table th,
+.table td {
+    padding: 0.5rem 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+}
+
+.table th {
+    background: var(--surface);
+    font-weight: 600;
+    color: var(--text);
+}
+
+.table tr:last-child td {
+    border-bottom: none;
+}
+
+.table tr:hover {
+    background: rgba(96, 165, 250, 0.05);
+}
+
+/* Blockquotes */
+.blockquote {
+    margin: 1rem 0;
+    padding: 0.75rem 1rem;
+    border-left: 4px solid #60a5fa;
+    background: rgba(96, 165, 250, 0.1);
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    color: var(--text);
+}
+
+.blockquote p {
+    margin: 0;
+}
+
+/* Lists */
+.markdownContainer ul,
+.markdownContainer ol {
+    margin: 0.75rem 0;
+    padding-left: 1.5rem;
+}
+
+.markdownContainer li {
+    margin: 0.25rem 0;
+}
+
+/* Paragraphs */
+.markdownContainer p {
+    margin-bottom: 0.75rem;
+    white-space: pre-wrap;
+    /* Preserve whitespace but wrap text */
+}
+
+.markdownContainer p:last-child {
+    margin-bottom: 0;
+}
+
+/* Strong and emphasis */
+.markdownContainer strong {
+    color: var(--text);
+    font-weight: 700;
+}
+
+.markdownContainer em {
+    font-style: italic;
+}
+
+/* Links */
+.markdownContainer a {
+    color: #60a5fa;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+}
+
+.markdownContainer a:hover {
+    border-bottom-color: #60a5fa;
+}
+
+/* Horizontal rule */
+.markdownContainer hr {
+    margin: 1.5rem 0;
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+}
+
+/* Math equations (KaTeX) */
+.markdownContainer .katex-display {
+    margin: 1rem 0;
+    padding: 0.5rem;
+    background: var(--surface);
+    border-radius: 8px;
+    overflow-x: auto;
+}
+
+.markdownContainer .katex {
+    font-size: 1.1em;
+}

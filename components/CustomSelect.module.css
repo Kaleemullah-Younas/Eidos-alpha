@@ -1,0 +1,148 @@
+.selectWrapper {
+    position: relative;
+    min-width: 160px;
+}
+
+.selectTrigger {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+    padding: 0.875rem 1.25rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text);
+    background: color-mix(in srgb, var(--surface-alt) 80%, transparent);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-align: left;
+    font-family: inherit;
+}
+
+.selectTrigger:hover {
+    border-color: var(--accent);
+    background: var(--surface-alt);
+    box-shadow: 0 0 0 3px hsl(175 85% 35% / 0.08);
+}
+
+.selectTrigger.open {
+    border-color: var(--accent);
+    background: var(--surface-alt);
+    box-shadow: 0 0 0 3px hsl(175 85% 35% / 0.12);
+}
+
+.icon {
+    display: flex;
+    align-items: center;
+    color: var(--muted);
+}
+
+.selectedValue {
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.chevron {
+    flex-shrink: 0;
+    color: var(--muted);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.chevron.rotated {
+    transform: rotate(180deg);
+}
+
+.dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    animation: slideDown 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-8px) scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.dropdownContent {
+    background: color-mix(in srgb, var(--surface) 95%, transparent);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 0.5rem;
+    box-shadow:
+        0 10px 40px -10px hsl(0 0% 0% / 0.25),
+        0 0 0 1px hsl(175 85% 35% / 0.05);
+    overflow: hidden;
+}
+
+.option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text);
+    background: transparent;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: left;
+    font-family: inherit;
+}
+
+.option:hover {
+    background: color-mix(in srgb, var(--accent) 12%, transparent);
+    color: var(--accent);
+}
+
+.option.selected {
+    background: linear-gradient(135deg,
+            hsl(175 85% 35% / 0.15),
+            hsl(185 80% 40% / 0.1));
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.option.selected:hover {
+    background: linear-gradient(135deg,
+            hsl(175 85% 35% / 0.2),
+            hsl(185 80% 40% / 0.15));
+}
+
+.checkIcon {
+    flex-shrink: 0;
+    color: var(--accent);
+}
+
+/* Dark theme adjustments */
+[data-theme='dark'] .selectTrigger:hover,
+[data-theme='dark'] .selectTrigger.open {
+    box-shadow: 0 0 0 3px hsl(175 85% 32% / 0.12);
+}
+
+[data-theme='dark'] .dropdownContent {
+    background: color-mix(in srgb, var(--surface) 98%, transparent);
+    box-shadow:
+        0 10px 40px -10px hsl(0 0% 0% / 0.1),
+        0 0 0 1px hsl(175 85% 32% / 0.08);
+}

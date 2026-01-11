@@ -1,0 +1,15 @@
+/node_modules
+.env
+/dist
+Promise
+.DS_Store
+
+/uploads/*.jpg
+.vscode/
+.next
+test
+
+/public/downloads
+
+.env.production.example
+

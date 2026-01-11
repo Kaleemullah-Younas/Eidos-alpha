@@ -1,0 +1,777 @@
+/* Course Viewer Styles - Udemy-inspired Layout */
+
+.loading {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    background: var(--bg);
+}
+
+.loading .spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--border);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.viewer {
+    min-height: 100vh;
+    background: var(--bg);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Top Bar */
+.topBar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1.5rem;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.topBarLeft {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.menuBtn {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    transition: all 0.2s;
+}
+
+.menuBtn:hover {
+    border-color: var(--accent);
+    background: var(--surface-alt);
+}
+
+.backLink {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+}
+
+.backLink:hover {
+    color: var(--accent);
+}
+
+.courseTitle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    color: var(--text);
+    font-size: 1rem;
+}
+
+.topBarRight {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.progressPill {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: var(--surface-alt);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.progressDot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.certificateBtn {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 1rem;
+    background: linear-gradient(135deg, hsl(48 96% 50%), hsl(38 92% 50%));
+    border: none;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.certificateBtn:hover {
+    transform: scale(1.02);
+}
+
+/* Viewer Body */
+.viewerBody {
+    display: flex;
+    flex: 1;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 360px;
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    transition: margin-left 0.3s;
+    flex-shrink: 0;
+    overflow-y: auto;
+    max-height: calc(100vh - 60px);
+}
+
+.sidebar:not(.open) {
+    margin-left: -360px;
+}
+
+.sidebarHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.sidebarHeader h3 {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--text);
+}
+
+.sidebarHeader span {
+    font-size: 0.85rem;
+    color: var(--muted);
+}
+
+.chapterList {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.chapterItem {
+    border-bottom: 1px solid var(--border);
+}
+
+.chapterHeader {
+    width: 100%;
+    padding: 1rem 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    color: var(--text);
+    transition: background 0.2s;
+}
+
+.chapterHeader:hover {
+    background: var(--surface-alt);
+}
+
+.chapterHeader.completed .checkIcon {
+    color: var(--success);
+}
+
+.chapterInfo {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+}
+
+.chapterInfo svg {
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+    color: var(--muted);
+}
+
+.chapterNumber {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+    display: block;
+}
+
+.chapterInfo h4 {
+    margin: 0.2rem 0 0;
+    font-size: 0.95rem;
+    color: var(--text);
+}
+
+.lessonList {
+    padding: 0.5rem 0;
+    background: var(--surface-alt);
+}
+
+.lessonItem {
+    width: 100%;
+    padding: 0.75rem 1.25rem 0.75rem 2.75rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    color: var(--text);
+    transition: all 0.2s;
+}
+
+.lessonItem:hover {
+    background: var(--surface);
+}
+
+.lessonItem.active {
+    background: var(--surface);
+    border-left: 3px solid var(--accent);
+}
+
+.lessonItem.completed .checkIcon {
+    color: var(--success);
+}
+
+.lessonIcon {
+    flex-shrink: 0;
+    color: var(--muted);
+}
+
+.lessonInfo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.lessonInfo span:first-child {
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.lessonMeta {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.75rem;
+    color: var(--muted);
+}
+
+/* Main Content */
+.mainContent {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    overflow-y: auto;
+    max-height: calc(100vh - 60px);
+}
+
+/* Lesson Header */
+.lessonHeader {
+    padding: 1.5rem 2rem;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+}
+
+.lessonBreadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+}
+
+.lessonHeader h1 {
+    margin: 0 0 0.75rem;
+    font-size: 1.5rem;
+    color: var(--text);
+}
+
+.lessonHeader .lessonMeta {
+    display: flex;
+    gap: 1.5rem;
+    font-size: 0.9rem;
+    color: var(--muted);
+}
+
+.lessonHeader .lessonMeta span {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+/* Lesson Content */
+.lessonContent {
+    flex: 1;
+    padding: 2rem;
+}
+
+.textContent {
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem;
+}
+
+.noContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem;
+    color: var(--muted);
+    gap: 0.75rem;
+    text-align: center;
+}
+
+.noContent .spinner {
+    animation: spin 1s linear infinite;
+    color: var(--accent);
+}
+
+.generatingHint {
+    font-size: 0.85rem;
+    opacity: 0.7;
+}
+
+.retryBtn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--accent), hsl(221 83% 43%));
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.retryBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px hsl(221 83% 53% / 0.3);
+}
+
+/* Lesson Actions */
+.lessonActions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+}
+
+.navBtn {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface);
+    color: var(--text);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.navBtn:hover:not(:disabled) {
+    border-color: var(--accent);
+    background: var(--surface-alt);
+}
+
+.navBtn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.spinner {
+    animation: spin 1s linear infinite;
+}
+
+.actionCenter {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.actionBtn {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface);
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.actionBtn:hover,
+.actionBtn.active {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: hsl(221 83% 53% / 0.1);
+}
+
+.completeBtn {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--success), hsl(142 70% 36%));
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.completeBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px hsl(142 76% 36% / 0.3);
+}
+
+/* Take Exam Button */
+.takeExamBtn {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, hsl(48 96% 50%), hsl(38 92% 50%));
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.takeExamBtn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px hsl(38 92% 50% / 0.3);
+}
+
+.takeExamBtn:disabled {
+    opacity: 0.7;
+    cursor: wait;
+}
+
+.takeExamBtn .spinner {
+    animation: spin 1s linear infinite;
+}
+
+/* Certificate button states */
+.certificateBtn.earned {
+    background: linear-gradient(135deg, hsl(48 96% 50%), hsl(38 92% 50%));
+    box-shadow: 0 4px 12px hsl(38 92% 50% / 0.3);
+}
+
+.certificateBtn:not(.earned) {
+    background: linear-gradient(135deg, #64748b, #475569);
+    opacity: 0.85;
+}
+
+/* Notes Panel - Fixed Right Side Panel */
+.notesPanel {
+    position: fixed;
+    top: 60px;
+    right: 0;
+    bottom: 0;
+    width: 360px;
+    background: var(--surface);
+    border-left: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
+    animation: slideInRight 0.3s ease;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+.notesPanelHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface-alt);
+}
+
+.notesPanelHeader h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0;
+    font-size: 1rem;
+    color: var(--text);
+}
+
+.saveNotesBtn {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    background: var(--accent);
+    color: white;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.saveNotesBtn:hover {
+    background: var(--accent-strong);
+}
+
+.notesPanelActions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.closeNotesBtn {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.closeNotesBtn:hover {
+    background: var(--danger);
+    border-color: var(--danger);
+    color: white;
+}
+
+.notesTextarea {
+    flex: 1;
+    width: 100%;
+    padding: 1rem 1.25rem;
+    font-size: 0.95rem;
+    font-family: inherit;
+    line-height: 1.6;
+    border: none;
+    background: var(--surface);
+    color: var(--text);
+    resize: none;
+}
+
+.notesTextarea:focus {
+    outline: none;
+}
+
+.notesTextarea::placeholder {
+    color: var(--muted);
+}
+
+/* Toast Notification */
+.toast {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    background: var(--success);
+    color: white;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+    z-index: 1000;
+    animation: toastSlideUp 0.3s ease;
+}
+
+@keyframes toastSlideUp {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .sidebar {
+        position: fixed;
+        top: 60px;
+        left: 0;
+        bottom: 0;
+        z-index: 50;
+        max-height: none;
+    }
+
+    .sidebar:not(.open) {
+        transform: translateX(-100%);
+        margin-left: 0;
+    }
+
+    .courseTitle {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .topBar {
+        padding: 0.75rem 1rem;
+    }
+
+    .topBarLeft {
+        gap: 0.5rem;
+    }
+
+    .backLink {
+        display: none;
+    }
+
+    .progressPill {
+        padding: 0.4rem 0.75rem;
+        font-size: 0.75rem;
+    }
+
+    .lessonHeader {
+        padding: 1rem;
+    }
+
+    .lessonHeader h1 {
+        font-size: 1.25rem;
+    }
+
+    .lessonContent {
+        padding: 0.75rem;
+    }
+
+    .textContent {
+        padding: 1rem;
+        border-radius: 12px;
+    }
+
+    .lessonActions {
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        padding: 1rem;
+    }
+
+    .actionCenter {
+        width: 100%;
+        justify-content: center;
+        order: -1;
+    }
+
+    .navBtn {
+        flex: 1;
+        justify-content: center;
+        padding: 0.6rem 1rem;
+        font-size: 0.85rem;
+    }
+
+    .completeBtn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Notes Panel - Full width on mobile */
+    .notesPanel {
+        width: 100%;
+        left: 0;
+        border-left: none;
+        border-top: 1px solid var(--border);
+    }
+
+    .notesPanelHeader {
+        padding: 0.75rem 1rem;
+    }
+
+    /* Toast adjusts for mobile */
+    .toast {
+        left: 1rem;
+        right: 1rem;
+        transform: none;
+        bottom: 1rem;
+    }
+
+    /* Retry button mobile */
+    .retryBtn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* noContent mobile */
+    .noContent {
+        padding: 2rem 1rem;
+    }
+}

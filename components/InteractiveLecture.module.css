@@ -1,0 +1,188 @@
+.lectureContainer {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--text);
+}
+
+.contentBlock {
+    position: relative;
+}
+
+.blockedContent {
+    filter: blur(8px);
+    opacity: 0.6;
+    pointer-events: none;
+    user-select: none;
+    transition: all 0.5s ease;
+}
+
+.blockOverlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 1.25rem 2.5rem;
+    background: color-mix(in srgb, var(--surface) 90%, transparent);
+    backdrop-filter: blur(4px);
+    border: 1px solid var(--accent);
+    border-radius: 16px;
+    font-weight: 700;
+    color: var(--accent);
+    text-align: center;
+    z-index: 10;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.markdownBlock {
+    margin-bottom: 1.5rem;
+}
+
+/* Headings */
+.h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 2rem 0 1rem;
+    color: var(--text);
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 0.5rem;
+}
+
+.h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 1.75rem 0 1rem;
+    color: var(--text);
+}
+
+.h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 1.5rem 0 0.75rem;
+    color: var(--text);
+}
+
+/* Code Blocks */
+.codeBlock {
+    margin: 1.5rem 0 !important;
+    border-radius: 12px !important;
+    font-size: 0.9rem !important;
+}
+
+.inlineCode {
+    background: rgba(96, 165, 250, 0.15);
+    color: #60a5fa;
+    padding: 0.2rem 0.5rem;
+    border-radius: 6px;
+    font-family: 'Fira Code', 'Consolas', monospace;
+    font-size: 0.9em;
+}
+
+/* Tables */
+.tableWrapper {
+    overflow-x: auto;
+    margin: 1.5rem 0;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+}
+
+.table th,
+.table td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+}
+
+.table th {
+    background: var(--surface);
+    font-weight: 600;
+    color: var(--text);
+}
+
+.table tr:last-child td {
+    border-bottom: none;
+}
+
+.table tr:hover {
+    background: rgba(96, 165, 250, 0.05);
+}
+
+/* Blockquotes */
+.blockquote {
+    margin: 2rem 0;
+    padding: 1.25rem 1.75rem;
+    border-left: 4px solid var(--accent);
+    background: color-mix(in srgb, var(--accent) 8%, transparent);
+    border-radius: 4px 16px 16px 4px;
+    font-style: italic;
+    color: var(--text);
+    line-height: 1.6;
+}
+
+.blockquote p {
+    margin: 0;
+}
+
+/* Lists */
+.lectureContainer ul,
+.lectureContainer ol {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+}
+
+.lectureContainer li {
+    margin: 0.5rem 0;
+}
+
+/* Paragraphs */
+.lectureContainer p {
+    margin: 1rem 0;
+}
+
+/* Strong and emphasis */
+.lectureContainer strong {
+    color: var(--text);
+    font-weight: 700;
+}
+
+.lectureContainer em {
+    font-style: italic;
+}
+
+/* Links */
+.lectureContainer a {
+    color: #60a5fa;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+}
+
+.lectureContainer a:hover {
+    border-bottom-color: #60a5fa;
+}
+
+/* Horizontal rule */
+.lectureContainer hr {
+    margin: 2rem 0;
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+}
+
+/* Math equations (KaTeX) */
+.lectureContainer .katex-display {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: var(--surface);
+    border-radius: 12px;
+    overflow-x: auto;
+}
+
+.lectureContainer .katex {
+    font-size: 1.1em;
+}

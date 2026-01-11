@@ -1,0 +1,381 @@
+/* Final Exam Styles - Matching Quiz UI */
+
+.examContainer {
+    display: grid;
+    gap: 1.25rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.examHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.examHeader h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--text);
+}
+
+.progressInfo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.questionBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 0.9rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.progressBar {
+    flex: 1;
+    height: 6px;
+    background: var(--surface-alt);
+    border-radius: 999px;
+    overflow: hidden;
+    min-width: 100px;
+}
+
+.progressFill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 999px;
+    transition: width 0.3s ease;
+}
+
+.questionCard {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.5rem;
+}
+
+.questionText {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin: 0 0 1.25rem;
+    line-height: 1.55;
+    color: var(--text);
+}
+
+.optionsList {
+    display: grid;
+    gap: 0.65rem;
+}
+
+.optionBtn {
+    border: 1px solid var(--border);
+    background: var(--surface);
+    padding: 1rem 1.1rem;
+    border-radius: 12px;
+    text-align: left;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.optionLetter {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    display: grid;
+    place-items: center;
+    background: var(--surface-alt);
+    border: 1px solid var(--border);
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--muted);
+    flex-shrink: 0;
+}
+
+.optionBtn:hover:not(:disabled) {
+    border-color: var(--accent);
+    background: hsl(221 83% 53% / 0.05);
+}
+
+.optionBtn:hover:not(:disabled) .optionLetter {
+    background: hsl(221 83% 53% / 0.15);
+    border-color: hsl(221 83% 53% / 0.3);
+    color: var(--accent);
+}
+
+.optionBtn.selected {
+    border-color: var(--accent);
+    background: hsl(221 83% 53% / 0.1);
+}
+
+.optionBtn.selected .optionLetter {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+}
+
+.navigation {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--surface);
+    color: var(--text);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.navBtn:hover:not(:disabled) {
+    background: var(--surface-alt);
+    border-color: var(--accent);
+}
+
+.navBtn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.submitBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--success), hsl(142 70% 36%));
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.submitBtn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px hsl(142 76% 36% / 0.3);
+}
+
+.submitBtn:disabled {
+    background: var(--muted);
+    cursor: not-allowed;
+}
+
+/* Results */
+.resultsContainer {
+    max-width: 500px;
+    margin: 2rem auto;
+}
+
+.scoreCard {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: var(--shadow-lg);
+}
+
+.scoreCard h2 {
+    margin: 0 0 1rem;
+    font-size: 1.5rem;
+    color: var(--text);
+}
+
+.scoreCircle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), hsl(221 83% 43%));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 1.5rem auto;
+    color: white;
+    box-shadow: 0 10px 30px hsl(221 83% 53% / 0.4);
+}
+
+.scoreCircle.passed {
+    background: linear-gradient(135deg, var(--success), hsl(142 70% 36%));
+    box-shadow: 0 10px 30px hsl(142 76% 36% / 0.4);
+}
+
+.scoreCircle.failed {
+    background: linear-gradient(135deg, hsl(0 72% 51%), hsl(0 72% 40%));
+    box-shadow: 0 10px 30px hsl(0 72% 51% / 0.4);
+}
+
+.scoreValue {
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+.scoreLabel {
+    font-size: 0.8rem;
+    opacity: 0.9;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.feedbackText {
+    font-size: 1.1rem;
+    color: var(--text);
+    margin-bottom: 1.5rem;
+}
+
+.feedbackText.passedText {
+    color: var(--success);
+}
+
+.feedbackText.failedText {
+    color: hsl(0 72% 51%);
+}
+
+/* Retake button */
+.retakeBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.5rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, hsl(221 83% 53%), hsl(201 100% 45%));
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-bottom: 1rem;
+}
+
+.retakeBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px hsl(221 83% 53% / 0.3);
+}
+
+.questionReview {
+    margin-top: 1.5rem;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.reviewItem {
+    padding: 1rem;
+    border-radius: 12px;
+    background: var(--surface-alt);
+    border: 1px solid var(--border);
+}
+
+.reviewItem.correct {
+    border-color: hsl(142 76% 36% / 0.4);
+    background: hsl(142 76% 36% / 0.08);
+}
+
+.reviewItem.correct .reviewHeader {
+    color: hsl(142 76% 36%);
+}
+
+.reviewItem.incorrect {
+    border-color: hsl(0 72% 51% / 0.4);
+    background: hsl(0 72% 51% / 0.08);
+}
+
+.reviewItem.incorrect .reviewHeader {
+    color: hsl(0 72% 51%);
+}
+
+.reviewHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.qNum {
+    background: var(--surface);
+    padding: 0.25rem 0.6rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+}
+
+.reviewItem p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--text);
+    line-height: 1.5;
+}
+
+.correctAnswer {
+    margin-top: 0.5rem !important;
+    font-size: 0.9rem !important;
+    color: var(--success) !important;
+    font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .examContainer {
+        padding: 0 1rem;
+    }
+
+    .examHeader {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .examHeader h1 {
+        font-size: 1.25rem;
+    }
+
+    .progressInfo {
+        width: 100%;
+    }
+
+    .progressBar {
+        flex: 1;
+    }
+
+    .questionCard {
+        padding: 1rem;
+    }
+
+    .navigation {
+        flex-wrap: wrap;
+    }
+
+    .navBtn,
+    .submitBtn {
+        flex: 1;
+        justify-content: center;
+    }
+}

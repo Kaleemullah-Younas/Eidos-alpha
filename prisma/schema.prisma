@@ -1,0 +1,173 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String    @id @default(auto()) @map("_id") @db.ObjectId
+  name          String
+  email         String    @unique
+  emailVerified Boolean   @default(false)
+  image         String?
+  role          String    @default("user")
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  sessions      Session[]
+  accounts      Account[]
+
+  courses       Course[]
+  studySessions StudySession[]
+  lectures      Lecture[]
+  captures      Capture[]
+  savedQuizzes  Quiz[]
+}
+
+model Session {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  expiresAt DateTime
+  token     String   @unique
+  ipAddress String?
+  userAgent String?
+  userId    String   @db.ObjectId
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Account {
+  id                    String    @id @default(auto()) @map("_id") @db.ObjectId
+  accountId             String
+  providerId            String
+  userId                String    @db.ObjectId
+  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  accessToken           String?
+  refreshToken          String?
+  idToken               String?
+  accessTokenExpiresAt  DateTime?
+  refreshTokenExpiresAt DateTime?
+  scope                 String?
+  password              String?
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+
+  @@unique([providerId, accountId])
+}
+
+model Verification {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  identifier String
+  value      String
+  expiresAt  DateTime
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model Course {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId      String   @db.ObjectId
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title       String
+  description String
+  thumbnail   String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Metadata
+  totalDuration      Int
+  totalLessons       Int
+  learningObjectives String[]
+  prerequisites      String[]
+  difficulty         String // 'beginner' | 'intermediate' | 'advanced'
+
+  // Progress
+  completedLessons Int @default(0)
+  progressPercent  Int @default(0)
+  currentChapter   Int @default(0)
+  currentLesson    Int @default(0)
+
+  certificateEarned Boolean   @default(false)
+  completedAt       DateTime?
+  finalExamScore    Float?
+
+  generationStatus   String @default("pending") // 'pending' | 'generating' | 'completed' | 'error'
+  generationProgress Json?
+
+  chapters Json // Array of Chapter objects
+
+  // Public & Publishing
+  isPublished      Boolean   @default(false)
+  publishedAt      DateTime?
+  originalCourseId String? // If this is a copy, points to original
+}
+
+model StudySession {
+  id             String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId         String   @db.ObjectId
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title          String
+  description    String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  lastAccessedAt DateTime @default(now())
+  tags           String[]
+
+  totalStudyTimeMinutes Float         @default(0)
+  quizAverageScore      Float         @default(0)
+  materials             Json // Array of StudyMaterial
+  quizzes               Json // Array of Quiz
+  chatMessages          ChatMessage[]
+}
+
+model ChatMessage {
+  id             String       @id @default(auto()) @map("_id") @db.ObjectId
+  studySessionId String       @db.ObjectId
+  studySession   StudySession @relation(fields: [studySessionId], references: [id], onDelete: Cascade)
+  role           String // 'user' | 'assistant'
+  content        String
+  timestamp      DateTime     @default(now())
+}
+
+model Lecture {
+  id     String @id @default(auto()) @map("_id") @db.ObjectId
+  userId String @db.ObjectId
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  type       String // 'written' | 'video'
+  topic      String
+  title      String
+  content    String? // for written
+  transcript String?
+  videoData  Json? // for video items
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Capture {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId     String   @db.ObjectId
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title      String
+  notes      String
+  transcript String
+  duration   Int
+  frameCount Int
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model Quiz {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId     String   @db.ObjectId
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title      String
+  topic      String
+  difficulty String   @default("medium")
+  questions  Json // Array of questions
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}

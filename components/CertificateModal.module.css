@@ -1,0 +1,333 @@
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    backdrop-filter: blur(8px);
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.modal {
+    background: #1e293b;
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    border-radius: 16px;
+    padding: 2rem;
+    width: 100%;
+    max-width: 500px;
+    position: relative;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    color: #f8fafc;
+}
+
+.largeModal {
+    max-width: 1000px;
+    width: 95%;
+    max-height: 90vh;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    overflow: hidden;
+    background: #0f172a;
+}
+
+/* Close button - moved to actions bar in large modal */
+.closeBtn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: all 0.2s;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.closeBtn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+
+/* In large modal, position close button inside actions bar */
+.largeModal .closeBtn {
+    position: static;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.formContainer {
+    text-align: center;
+    padding: 1rem;
+}
+
+.iconWrapper {
+    width: 80px;
+    height: 80px;
+    background: rgba(251, 191, 36, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+}
+
+.trophyIcon {
+    font-size: 2.5rem;
+}
+
+.formContainer h2 {
+    font-size: 1.8rem;
+    color: #fff;
+    margin-bottom: 0.5rem;
+}
+
+.formContainer p {
+    color: #cbd5e1;
+    margin-bottom: 0.5rem;
+}
+
+.instruction {
+    font-size: 0.9rem;
+    color: #94a3b8 !important;
+    margin-bottom: 2rem !important;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.input {
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid #475569;
+    background: #0f172a;
+    color: white;
+    font-size: 1rem;
+}
+
+.input:focus {
+    outline: none;
+    border-color: #6366f1;
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+}
+
+.generateBtn {
+    padding: 1rem;
+    background: linear-gradient(135deg, #c9a227, #9a7b0a);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.generateBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(201, 162, 39, 0.3);
+}
+
+/* View Mode */
+.certificateView {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 0;
+    background: #0f172a;
+}
+
+.actionsBar {
+    padding: 1rem 1.5rem;
+    background: #1e293b;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+    gap: 1rem;
+}
+
+.actionsBar h3 {
+    margin: 0;
+    color: #f8fafc;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.actionButtons {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+}
+
+.downloadBtn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    background: linear-gradient(135deg, #c9a227, #9a7b0a);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 0.9rem;
+}
+
+.downloadBtn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(201, 162, 39, 0.35);
+}
+
+.downloadBtn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.printBtn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 0.9rem;
+}
+
+.printBtn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Certificate Display - Scrollable Container */
+.certificateScroll {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: auto;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
+    min-height: 0;
+}
+
+/* Print Container - For isolating certificate during print */
+.printContainer {
+    display: contents;
+}
+
+/* ============================================
+   PRINT STYLES - Only show certificate
+   ============================================ */
+@media print {
+
+    /* Hide everything on the page */
+    body * {
+        visibility: hidden !important;
+    }
+
+    /* Show only the certificate wrapper and its children */
+    .printContainer,
+    .printContainer * {
+        visibility: visible !important;
+    }
+
+    /* Position the certificate for printing */
+    .printContainer {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        background: white !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    /* Hide modal UI elements */
+    .overlay,
+    .modal,
+    .actionsBar,
+    .closeBtn,
+    .formContainer,
+    .certificateScroll {
+        display: none !important;
+        visibility: hidden !important;
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .overlay {
+        padding: 10px;
+    }
+
+    .largeModal {
+        max-height: 100vh;
+        height: 100vh;
+        border-radius: 0;
+        width: 100%;
+    }
+
+    .actionsBar {
+        flex-wrap: wrap;
+        padding: 0.75rem 1rem;
+    }
+
+    .actionsBar h3 {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 0.5rem;
+    }
+
+    .actionButtons {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .downloadBtn,
+    .printBtn {
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+    }
+
+    .certificateScroll {
+        padding: 1rem;
+    }
+}
