@@ -50,13 +50,15 @@ eidos/
 | Database | MongoDB | Document storage via Prisma |
 | ORM | Prisma | Database abstraction layer |
 | Auth | Better-Auth | Session-based authentication |
-| AI | Google Gemini 2.0 Flash | Content generation and tutoring |
+| AI | Google Gemini 3 (`@google/generative-ai` SDK) | Content generation and tutoring |
 | 3D | Three.js / React Three Fiber | Landing page visual effects |
 | Math | KaTeX | Mathematical equation rendering |
 
 ## AI Integration
 
-EIDOS integrates Google Gemini API for multiple AI-powered features:
+EIDOS integrates Google Gemini 3 API (via the `@google/generative-ai` SDK) for multiple AI-powered features.
+The API key is loaded from the `GOOGLE_API_KEY` environment variable and the model name from `MODEL` (default: `gemini-3-flash-preview`).
+See the main [README](../README.md#-gemini-3-integration) for a complete file-by-file reference.
 
 ### Content Generation Flow
 

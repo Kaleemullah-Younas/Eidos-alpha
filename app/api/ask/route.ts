@@ -1,6 +1,16 @@
 import { NextRequest } from 'next/server';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
+/**
+ * ──────────────────────────────────────────────────────────────
+ * GEMINI 3 INTEGRATION – Study Q&A / Ask endpoint
+ * ──────────────────────────────────────────────────────────────
+ * Uses the Google Generative AI SDK (@google/generative-ai) to
+ * power the interactive Q&A feature within study sessions.
+ * The model (e.g. gemini-3-flash-preview) is resolved from the
+ * MODEL environment variable; the API key from GOOGLE_API_KEY.
+ * ──────────────────────────────────────────────────────────────
+ */
 const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY!);
 
 interface ChatMessage {

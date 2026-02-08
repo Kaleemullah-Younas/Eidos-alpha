@@ -1,6 +1,16 @@
 import { NextRequest } from 'next/server';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
+/**
+ * ──────────────────────────────────────────────────────────────
+ * GEMINI 3 INTEGRATION – Document Upload & Analysis
+ * ──────────────────────────────────────────────────────────────
+ * Uses Gemini 3's multimodal (vision) capabilities to extract
+ * and structure educational content from uploaded PDFs / images.
+ * Model: process.env.MODEL (e.g. gemini-3-flash-preview)
+ * Key:   process.env.GOOGLE_API_KEY
+ * ──────────────────────────────────────────────────────────────
+ */
 const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY!);
 
 // Supported MIME types for Gemini Vision

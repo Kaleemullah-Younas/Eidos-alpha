@@ -2,6 +2,16 @@ import { NextRequest, NextResponse } from 'next/server';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import { ExamQuestion } from '@/lib/courseStorage';
 
+/**
+ * ──────────────────────────────────────────────────────────────
+ * GEMINI 3 INTEGRATION – Final Exam Generation
+ * ──────────────────────────────────────────────────────────────
+ * Generates comprehensive final-exam questions for a course
+ * using Gemini 3. Questions cover all chapters and lessons.
+ * Model: process.env.MODEL (e.g. gemini-3-flash-preview)
+ * Key:   process.env.GOOGLE_API_KEY
+ * ──────────────────────────────────────────────────────────────
+ */
 const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY!);
 
 // Generate unique ID

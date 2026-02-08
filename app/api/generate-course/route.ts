@@ -4,6 +4,18 @@ import { CourseOutline, Course, Chapter, Lesson, LessonType } from '@/lib/course
 import { generateVideoLectureContent } from '@/lib/videoLectureGenerator';
 import { generateTextLectureContent } from '@/lib/textLectureGenerator';
 
+/**
+ * ──────────────────────────────────────────────────────────────
+ * GEMINI 3 INTEGRATION – Course Generation endpoint
+ * ──────────────────────────────────────────────────────────────
+ * Generates a complete structured course (outline → chapters →
+ * lessons → quizzes) using Gemini 3. This is one of the most
+ * intensive Gemini consumers – it makes multiple sequential
+ * calls to build out each lesson and quiz.
+ * Model: process.env.MODEL (e.g. gemini-3-flash-preview)
+ * Key:   process.env.GOOGLE_API_KEY
+ * ──────────────────────────────────────────────────────────────
+ */
 const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY!);
 
 // Generate unique ID on server

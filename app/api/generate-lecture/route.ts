@@ -1,6 +1,16 @@
 import { NextRequest } from 'next/server';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
+/**
+ * ──────────────────────────────────────────────────────────────
+ * GEMINI 3 INTEGRATION – Written Lecture Generation
+ * ──────────────────────────────────────────────────────────────
+ * Streams a comprehensive written lecture on any topic using
+ * Gemini 3. Output is Markdown-formatted educational content.
+ * Model: process.env.MODEL (e.g. gemini-3-flash-preview)
+ * Key:   process.env.GOOGLE_API_KEY
+ * ──────────────────────────────────────────────────────────────
+ */
 const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY!);
 
 export async function POST(request: NextRequest) {

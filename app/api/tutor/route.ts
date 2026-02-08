@@ -1,6 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
+/**
+ * ──────────────────────────────────────────────────────────────
+ * GEMINI 3 INTEGRATION – AI Tutor endpoint
+ * ──────────────────────────────────────────────────────────────
+ * Powers the voice-activated AI Tutor feature. Sends the user's
+ * spoken question + on-screen context to Gemini 3 and returns a
+ * concise, spoken-style answer.
+ * Model: process.env.MODEL (e.g. gemini-3-flash-preview)
+ * Key:   process.env.GOOGLE_API_KEY
+ * ──────────────────────────────────────────────────────────────
+ */
 const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY!);
 
 export async function POST(req: NextRequest) {

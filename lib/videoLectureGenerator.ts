@@ -1,5 +1,16 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
+/**
+ * ──────────────────────────────────────────────────────────────
+ * GEMINI 3 INTEGRATION – Video Lecture Generator (shared lib)
+ * ──────────────────────────────────────────────────────────────
+ * Shared utility consumed by /api/generate-video-lecture and
+ * /api/generate-course to produce slide-based video lecture
+ * scripts via Gemini 3.
+ * Model: process.env.MODEL (e.g. gemini-3-flash-preview)
+ * Key:   process.env.GOOGLE_API_KEY
+ * ──────────────────────────────────────────────────────────────
+ */
 const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY!);
 
 /**

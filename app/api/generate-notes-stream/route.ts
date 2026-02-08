@@ -3,6 +3,16 @@ import { GoogleGenerativeAI } from '@google/generative-ai';
 import { promises as fs } from 'fs';
 import { getSession } from '@/lib/sessions';
 
+/**
+ * ──────────────────────────────────────────────────────────────
+ * GEMINI 3 INTEGRATION – Streaming Note Generation
+ * ──────────────────────────────────────────────────────────────
+ * Same as /api/generate-notes but streams the response via SSE
+ * for a real-time generation experience in the UI.
+ * Model: process.env.MODEL (e.g. gemini-3-flash-preview)
+ * Key:   process.env.GOOGLE_API_KEY
+ * ──────────────────────────────────────────────────────────────
+ */
 const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY!);
 
 export async function POST(request: NextRequest) {

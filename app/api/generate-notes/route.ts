@@ -3,6 +3,16 @@ import { GoogleGenerativeAI } from '@google/generative-ai';
 import { promises as fs } from 'fs';
 import { getSession } from '@/lib/sessions';
 
+/**
+ * ──────────────────────────────────────────────────────────────
+ * GEMINI 3 INTEGRATION – Note Generation
+ * ──────────────────────────────────────────────────────────────
+ * Takes captured lecture transcript + extracted frames and uses
+ * Gemini 3 to produce structured Markdown study notes.
+ * Model: process.env.MODEL (e.g. gemini-3-flash-preview)
+ * Key:   process.env.GOOGLE_API_KEY
+ * ──────────────────────────────────────────────────────────────
+ */
 const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY!);
 
 export async function POST(request: NextRequest) {

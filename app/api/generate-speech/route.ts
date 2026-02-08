@@ -1,6 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
+/**
+ * ──────────────────────────────────────────────────────────────
+ * GEMINI 3 INTEGRATION – Text-to-Speech Generation
+ * ──────────────────────────────────────────────────────────────
+ * Converts text to natural spoken audio using the Gemini TTS
+ * model (gemini-2.5-flash-lite-preview-tts). Audio is returned
+ * as inline PCM data for the video-lecture presenter.
+ * Key: process.env.GOOGLE_API_KEY
+ * ──────────────────────────────────────────────────────────────
+ */
 const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY!);
 
 export async function POST(req: NextRequest) {
