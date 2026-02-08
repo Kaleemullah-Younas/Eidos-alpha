@@ -41,18 +41,18 @@ eidos/
 
 ## Core Technologies
 
-| Layer | Technology | Purpose |
-|-------|------------|---------|
-| Framework | Next.js 14+ | Full-stack React framework with App Router |
-| Frontend | React 19 | UI components and state management |
-| Styling | CSS Modules | Scoped component styles |
-| Language | TypeScript | Type-safe development |
-| Database | MongoDB | Document storage via Prisma |
-| ORM | Prisma | Database abstraction layer |
-| Auth | Better-Auth | Session-based authentication |
-| AI | Google Gemini 3 (`@google/generative-ai` SDK) | Content generation and tutoring |
-| 3D | Three.js / React Three Fiber | Landing page visual effects |
-| Math | KaTeX | Mathematical equation rendering |
+| Layer     | Technology                                    | Purpose                                    |
+| --------- | --------------------------------------------- | ------------------------------------------ |
+| Framework | Next.js 14+                                   | Full-stack React framework with App Router |
+| Frontend  | React 19                                      | UI components and state management         |
+| Styling   | CSS Modules                                   | Scoped component styles                    |
+| Language  | TypeScript                                    | Type-safe development                      |
+| Database  | MongoDB                                       | Document storage via Prisma                |
+| ORM       | Prisma                                        | Database abstraction layer                 |
+| Auth      | Better-Auth                                   | Session-based authentication               |
+| AI        | Google Gemini 3 (`@google/generative-ai` SDK) | Content generation and tutoring            |
+| 3D        | Three.js / React Three Fiber                  | Landing page visual effects                |
+| Math      | KaTeX                                         | Mathematical equation rendering            |
 
 ## AI Integration
 

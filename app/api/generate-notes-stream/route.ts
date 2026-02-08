@@ -171,7 +171,7 @@ Here are the lecture materials:`,
         error: 'Failed to generate notes',
         details: (error as Error).message,
       }),
-      { status: 500, headers: { 'Content-Type': 'application/json' } }
+      { status: 500, headers: { 'Content-Type': 'application/json' } },
     );
   }
 }

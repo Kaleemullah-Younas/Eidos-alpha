@@ -34,8 +34,9 @@ export async function POST(request: NextRequest) {
 ## Topic: ${topic}
 
 ## Requirements:
-- Target reading time: ${duration} minutes (approximately ${parseInt(duration) * 200
-      }-${parseInt(duration) * 250} words)
+- Target reading time: ${duration} minutes (approximately ${
+      parseInt(duration) * 200
+    }-${parseInt(duration) * 250} words)
 - Write in an engaging, conversational yet educational tone
 - Structure the content for optimal learning and retention
 
@@ -130,7 +131,7 @@ Generate the complete lecture now with embedded quizzes and visual descriptions:
           controller.close();
 
           console.log(
-            `✅ Written lecture generated: ${fullContent.length} chars`
+            `✅ Written lecture generated: ${fullContent.length} chars`,
           );
         } catch (error) {
           console.error('❌ Lecture generation error:', error);
@@ -157,7 +158,7 @@ Generate the complete lecture now with embedded quizzes and visual descriptions:
       JSON.stringify({
         error: (error as Error).message || 'Failed to generate lecture',
       }),
-      { status: 500, headers: { 'Content-Type': 'application/json' } }
+      { status: 500, headers: { 'Content-Type': 'application/json' } },
     );
   }
 }

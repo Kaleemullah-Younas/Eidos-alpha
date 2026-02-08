@@ -25,12 +25,13 @@
 
 The Gemini model is configured through environment variables (see [`.env.example`](.env.example)):
 
-| Variable | Purpose | Default Value |
-|----------|---------|---------------|
-| `GOOGLE_API_KEY` | Google AI Studio API key | *(required)* |
-| `MODEL` | Gemini model identifier | `gemini-3-flash-preview` |
+| Variable         | Purpose                  | Default Value            |
+| ---------------- | ------------------------ | ------------------------ |
+| `GOOGLE_API_KEY` | Google AI Studio API key | _(required)_             |
+| `MODEL`          | Gemini model identifier  | `gemini-3-flash-preview` |
 
 Other supported models are listed in [`models.txt`](models.txt):
+
 - `gemini-3-pro-preview`
 - `gemini-2.5-flash-lite` (used for TTS)
 
@@ -46,22 +47,22 @@ const model = genAI.getGenerativeModel({ model: process.env.MODEL! });
 
 Below is the **complete list** of files that call the Gemini API:
 
-| # | File | Feature | Gemini Capability Used |
-|---|------|---------|------------------------|
-| 1 | [`app/api/generate-course/route.ts`](app/api/generate-course/route.ts) | Full course generation (outline → chapters → lessons → quizzes) | Text generation, structured JSON output |
-| 2 | [`app/api/generate-lecture/route.ts`](app/api/generate-lecture/route.ts) | Written lecture generation (streaming) | Text generation with streaming |
-| 3 | [`app/api/generate-video-lecture/route.ts`](app/api/generate-video-lecture/route.ts) | Video lecture script generation | Text generation, structured JSON output |
-| 4 | [`app/api/generate-notes/route.ts`](app/api/generate-notes/route.ts) | AI note generation from captured lectures | Text generation |
-| 5 | [`app/api/generate-notes-stream/route.ts`](app/api/generate-notes-stream/route.ts) | Streaming note generation (real-time UX) | Text generation with streaming |
-| 6 | [`app/api/generate-quiz/route.ts`](app/api/generate-quiz/route.ts) | Quiz generation with JSON mode | Text generation, `responseMimeType: 'application/json'` |
-| 7 | [`app/api/generate-quiz-stream/route.ts`](app/api/generate-quiz-stream/route.ts) | Streaming quiz generation | Text generation with streaming + JSON mode |
-| 8 | [`app/api/generate-exam/route.ts`](app/api/generate-exam/route.ts) | Final exam generation for courses | Text generation, structured JSON output |
-| 9 | [`app/api/generate-speech/route.ts`](app/api/generate-speech/route.ts) | Text-to-speech for video lectures | Gemini TTS (`gemini-2.5-flash-lite-preview-tts`) |
-| 10 | [`app/api/tutor/route.ts`](app/api/tutor/route.ts) | Voice-activated AI tutor | Text generation with context |
-| 11 | [`app/api/ask/route.ts`](app/api/ask/route.ts) | Study session Q&A chat | Text generation with conversation history |
-| 12 | [`app/api/upload-document/route.ts`](app/api/upload-document/route.ts) | Document analysis (PDF/image) | **Multimodal** — vision + text generation |
-| 13 | [`lib/textLectureGenerator.ts`](lib/textLectureGenerator.ts) | Shared text-lecture generator | Text generation (used by routes #1 & #2) |
-| 14 | [`lib/videoLectureGenerator.ts`](lib/videoLectureGenerator.ts) | Shared video-lecture generator | Text generation (used by routes #1 & #3) |
+| #   | File                                                                                 | Feature                                                         | Gemini Capability Used                                  |
+| --- | ------------------------------------------------------------------------------------ | --------------------------------------------------------------- | ------------------------------------------------------- |
+| 1   | [`app/api/generate-course/route.ts`](app/api/generate-course/route.ts)               | Full course generation (outline → chapters → lessons → quizzes) | Text generation, structured JSON output                 |
+| 2   | [`app/api/generate-lecture/route.ts`](app/api/generate-lecture/route.ts)             | Written lecture generation (streaming)                          | Text generation with streaming                          |
+| 3   | [`app/api/generate-video-lecture/route.ts`](app/api/generate-video-lecture/route.ts) | Video lecture script generation                                 | Text generation, structured JSON output                 |
+| 4   | [`app/api/generate-notes/route.ts`](app/api/generate-notes/route.ts)                 | AI note generation from captured lectures                       | Text generation                                         |
+| 5   | [`app/api/generate-notes-stream/route.ts`](app/api/generate-notes-stream/route.ts)   | Streaming note generation (real-time UX)                        | Text generation with streaming                          |
+| 6   | [`app/api/generate-quiz/route.ts`](app/api/generate-quiz/route.ts)                   | Quiz generation with JSON mode                                  | Text generation, `responseMimeType: 'application/json'` |
+| 7   | [`app/api/generate-quiz-stream/route.ts`](app/api/generate-quiz-stream/route.ts)     | Streaming quiz generation                                       | Text generation with streaming + JSON mode              |
+| 8   | [`app/api/generate-exam/route.ts`](app/api/generate-exam/route.ts)                   | Final exam generation for courses                               | Text generation, structured JSON output                 |
+| 9   | [`app/api/generate-speech/route.ts`](app/api/generate-speech/route.ts)               | Text-to-speech for video lectures                               | Gemini TTS (`gemini-2.5-flash-lite-preview-tts`)        |
+| 10  | [`app/api/tutor/route.ts`](app/api/tutor/route.ts)                                   | Voice-activated AI tutor                                        | Text generation with context                            |
+| 11  | [`app/api/ask/route.ts`](app/api/ask/route.ts)                                       | Study session Q&A chat                                          | Text generation with conversation history               |
+| 12  | [`app/api/upload-document/route.ts`](app/api/upload-document/route.ts)               | Document analysis (PDF/image)                                   | **Multimodal** — vision + text generation               |
+| 13  | [`lib/textLectureGenerator.ts`](lib/textLectureGenerator.ts)                         | Shared text-lecture generator                                   | Text generation (used by routes #1 & #2)                |
+| 14  | [`lib/videoLectureGenerator.ts`](lib/videoLectureGenerator.ts)                       | Shared video-lecture generator                                  | Text generation (used by routes #1 & #3)                |
 
 ### Gemini Capabilities Leveraged
 
@@ -78,11 +79,13 @@ Below is the **complete list** of files that call the Gemini API:
 ## Core Features
 
 ### 🎥 Live Capture
+
 Record lectures in real-time with automatic video frame extraction, speech-to-text transcription, and AI-powered note generation.
 
 > 📖 **Learn more:** See the [Architecture Guide](docs/ARCHITECTURE.md) for technical details on how capture processing works.
 
 ### 🤖 AI Content Generation
+
 - **Structured Notes** – Comprehensive markdown notes from lectures using Google Gemini
 - **Video Lectures** – Slide-based presentations with AI narration
 - **Written Lectures** – In-depth educational content on any topic
@@ -91,12 +94,15 @@ Record lectures in real-time with automatic video frame extraction, speech-to-te
 > 📖 **Learn more:** See the [API Reference](docs/API.md) for all generation endpoints.
 
 ### 🎓 Course Architect
+
 Generate complete courses from any topic with chapters, lessons, quizzes, and final exams. Earn certificates upon completion.
 
 ### 📚 Study Sessions
+
 Organize learning materials, upload documents, and chat with an AI tutor that understands your specific content.
 
 ### 🧠 Interactive AI Tutor
+
 Voice-activated study assistant with interrupt detection, context-aware responses, and natural conversation flow.
 
 > 📖 **Learn more:** See the [Components Guide](docs/COMPONENTS.md) for details on the AITutor component.
@@ -105,15 +111,15 @@ Voice-activated study assistant with interrupt detection, context-aware response
 
 ## Technical Architecture
 
-| Layer | Technology |
-|-------|------------|
-| **Framework** | Next.js 14+ (App Router) |
-| **Frontend** | React 19, TypeScript |
-| **Styling** | CSS Modules with Design Tokens |
-| **Database** | Prisma ORM + MongoDB |
-| **Auth** | Better-Auth |
-| **AI** | Google Gemini 3 (`@google/generative-ai` SDK) |
-| **3D** | Three.js / React Three Fiber |
+| Layer         | Technology                                    |
+| ------------- | --------------------------------------------- |
+| **Framework** | Next.js 14+ (App Router)                      |
+| **Frontend**  | React 19, TypeScript                          |
+| **Styling**   | CSS Modules with Design Tokens                |
+| **Database**  | Prisma ORM + MongoDB                          |
+| **Auth**      | Better-Auth                                   |
+| **AI**        | Google Gemini 3 (`@google/generative-ai` SDK) |
+| **3D**        | Three.js / React Three Fiber                  |
 
 > 📖 **Learn more:** See the full [Architecture Documentation](docs/ARCHITECTURE.md) for system diagrams and data flows.
 
@@ -122,6 +128,7 @@ Voice-activated study assistant with interrupt detection, context-aware response
 ## Getting Started
 
 ### Prerequisites
+
 - Node.js 18.0 or higher
 - MongoDB instance (local or Atlas)
 - Google AI Studio API Key ([get one here](https://aistudio.google.com/apikey))
@@ -150,17 +157,17 @@ npm run dev
 
 ### Environment Variables
 
-| Variable | Required | Description |
-|----------|----------|-------------|
-| `GOOGLE_API_KEY` | **Yes** | Your Google AI Studio API key — powers all Gemini 3 features |
-| `MODEL` | **Yes** | Gemini model name (default: `gemini-3-flash-preview`) |
-| `DATABASE_URL` | **Yes** | MongoDB connection string |
-| `BETTER_AUTH_SECRET` | **Yes** | Auth secret (`openssl rand -base64 32`) |
-| `BETTER_AUTH_URL` | **Yes** | App URL (default: `http://localhost:3000`) |
-| `GITHUB_CLIENT_ID` | No | GitHub OAuth client ID |
-| `GITHUB_CLIENT_SECRET` | No | GitHub OAuth client secret |
-| `GOOGLE_CLIENT_ID` | No | Google OAuth client ID |
-| `GOOGLE_CLIENT_SECRET` | No | Google OAuth client secret |
+| Variable               | Required | Description                                                  |
+| ---------------------- | -------- | ------------------------------------------------------------ |
+| `GOOGLE_API_KEY`       | **Yes**  | Your Google AI Studio API key — powers all Gemini 3 features |
+| `MODEL`                | **Yes**  | Gemini model name (default: `gemini-3-flash-preview`)        |
+| `DATABASE_URL`         | **Yes**  | MongoDB connection string                                    |
+| `BETTER_AUTH_SECRET`   | **Yes**  | Auth secret (`openssl rand -base64 32`)                      |
+| `BETTER_AUTH_URL`      | **Yes**  | App URL (default: `http://localhost:3000`)                   |
+| `GITHUB_CLIENT_ID`     | No       | GitHub OAuth client ID                                       |
+| `GITHUB_CLIENT_SECRET` | No       | GitHub OAuth client secret                                   |
+| `GOOGLE_CLIENT_ID`     | No       | Google OAuth client ID                                       |
+| `GOOGLE_CLIENT_SECRET` | No       | Google OAuth client secret                                   |
 
 > See [`.env.example`](.env.example) for the full template with comments.
 
@@ -170,14 +177,13 @@ npm run dev
 
 ## Documentation
 
-| Document | Description |
-|----------|-------------|
+| Document                                | Description                                                    |
+| --------------------------------------- | -------------------------------------------------------------- |
 | [🏗️ Architecture](docs/ARCHITECTURE.md) | System architecture, project structure, and technical overview |
-| [🧩 Components](docs/COMPONENTS.md) | React component reference with usage examples |
-| [🔌 API Reference](docs/API.md) | All API endpoints with request/response formats |
-| [🗄️ Database](docs/DATABASE.md) | Prisma schema, models, and query examples |
-| [⚙️ Setup Guide](docs/SETUP.md) | Development environment setup and configuration |
-
+| [🧩 Components](docs/COMPONENTS.md)     | React component reference with usage examples                  |
+| [🔌 API Reference](docs/API.md)         | All API endpoints with request/response formats                |
+| [🗄️ Database](docs/DATABASE.md)         | Prisma schema, models, and query examples                      |
+| [⚙️ Setup Guide](docs/SETUP.md)         | Development environment setup and configuration                |
 
 ### User Documentation
 

@@ -21,7 +21,7 @@ export async function POST(req: NextRequest) {
     if (!question) {
       return NextResponse.json(
         { error: 'Question is required' },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -52,7 +52,7 @@ export async function POST(req: NextRequest) {
     console.error('Tutor error:', error);
     return NextResponse.json(
       { error: 'Failed to get tutor response' },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

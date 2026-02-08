@@ -105,7 +105,7 @@ ${text.slice(0, 12000)}
               done: false,
               progress: Math.min(
                 95,
-                Math.floor((fullText.length / 2000) * 100)
+                Math.floor((fullText.length / 2000) * 100),
               ),
             });
             controller.enqueue(encoder.encode(`data: ${data}\n\n`));
@@ -163,7 +163,7 @@ ${text.slice(0, 12000)}
       JSON.stringify({
         error: (error as Error).message || 'Failed to generate quiz',
       }),
-      { status: 500, headers: { 'Content-Type': 'application/json' } }
+      { status: 500, headers: { 'Content-Type': 'application/json' } },
     );
   }
 }

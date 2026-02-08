@@ -18,7 +18,7 @@ const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY!);
  * This is used by both /api/generate-lecture (streaming) and /api/generate-course (non-streaming)
  */
 export function getTextLecturePrompt(topic: string, duration: number): string {
-    return `You are a world-class professor and educational content creator. Create a comprehensive, engaging written lecture on the following topic.
+  return `You are a world-class professor and educational content creator. Create a comprehensive, engaging written lecture on the following topic.
 
 ## Topic: ${topic}
 
@@ -93,10 +93,13 @@ Generate the complete lecture now with embedded quizzes and visual descriptions:
 /**
  * Generate text lecture content (non-streaming version for course lessons)
  */
-export async function generateTextLectureContent(topic: string, duration: number): Promise<string> {
-    const model = genAI.getGenerativeModel({ model: process.env.MODEL! });
-    const prompt = getTextLecturePrompt(topic, duration);
+export async function generateTextLectureContent(
+  topic: string,
+  duration: number,
+): Promise<string> {
+  const model = genAI.getGenerativeModel({ model: process.env.MODEL! });
+  const prompt = getTextLecturePrompt(topic, duration);
 
-    const result = await model.generateContent([{ text: prompt }]);
-    return result.response.text();
+  const result = await model.generateContent([{ text: prompt }]);
+  return result.response.text();
 }

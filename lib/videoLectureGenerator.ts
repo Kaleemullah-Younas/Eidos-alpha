@@ -19,7 +19,7 @@ const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY!);
  */
 export async function generateVideoLectureContent(
   topic: string,
-  duration: number = 3
+  duration: number = 3,
 ) {
   const model = genAI.getGenerativeModel({ model: process.env.MODEL! });
 

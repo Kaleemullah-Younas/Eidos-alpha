@@ -37,7 +37,7 @@ export async function POST(request: NextRequest) {
     console.log(`🤔 Q&A: "${question.slice(0, 50)}..."`);
     console.log(`📚 Context length: ${context?.length || 0} chars`);
     console.log(
-      `💬 Conversation history: ${conversationHistory.length} messages`
+      `💬 Conversation history: ${conversationHistory.length} messages`,
     );
     console.log(`🔍 Search enabled: ${enableSearch}`);
 
@@ -50,7 +50,7 @@ export async function POST(request: NextRequest) {
     const historyText = historyMessages
       .map(
         (m: ChatMessage) =>
-          `${m.role === 'user' ? 'Student' : 'Assistant'}: ${m.content}`
+          `${m.role === 'user' ? 'Student' : 'Assistant'}: ${m.content}`,
       )
       .join('\n\n');
 
@@ -162,7 +162,7 @@ Response:`;
       JSON.stringify({
         error: (error as Error).message || 'Failed to answer question',
       }),
-      { status: 500, headers: { 'Content-Type': 'application/json' } }
+      { status: 500, headers: { 'Content-Type': 'application/json' } },
     );
   }
 }

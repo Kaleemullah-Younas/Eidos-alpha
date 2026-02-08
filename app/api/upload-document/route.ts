@@ -43,7 +43,7 @@ export async function POST(request: NextRequest) {
             file.type
           }. Supported: ${SUPPORTED_MIME_TYPES.join(', ')}`,
         }),
-        { status: 400, headers: { 'Content-Type': 'application/json' } }
+        { status: 400, headers: { 'Content-Type': 'application/json' } },
       );
     }
 
@@ -114,7 +114,7 @@ Document title: "${title}"`;
               done: false,
               progress: Math.min(
                 95,
-                Math.floor((fullText.length / 5000) * 100)
+                Math.floor((fullText.length / 5000) * 100),
               ),
             });
             controller.enqueue(encoder.encode(`data: ${data}\n\n`));
@@ -133,7 +133,7 @@ Document title: "${title}"`;
           controller.close();
 
           console.log(
-            `✅ Document processed: ${fullText.length} characters extracted`
+            `✅ Document processed: ${fullText.length} characters extracted`,
           );
         } catch (error) {
           console.error('❌ Document processing error:', error);
@@ -160,7 +160,7 @@ Document title: "${title}"`;
       JSON.stringify({
         error: (error as Error).message || 'Failed to process upload',
       }),
-      { status: 500, headers: { 'Content-Type': 'application/json' } }
+      { status: 500, headers: { 'Content-Type': 'application/json' } },
     );
   }
 }

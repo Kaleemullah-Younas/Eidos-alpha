@@ -42,7 +42,7 @@ export async function POST(request: NextRequest) {
     if (!text.trim()) {
       return NextResponse.json(
         { error: 'Study text is required' },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -76,7 +76,7 @@ Study material:
     console.error('Quiz generation error:', error);
     return NextResponse.json(
       { error: (error as Error).message || 'Failed to generate quiz' },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

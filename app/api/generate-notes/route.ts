@@ -22,7 +22,7 @@ export async function POST(request: NextRequest) {
     if (!sessionId) {
       return NextResponse.json(
         { error: 'Session ID required' },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -113,7 +113,7 @@ Here are the lecture materials:`,
     console.error('❌ Error generating notes:', error);
     return NextResponse.json(
       { error: 'Failed to generate notes', details: (error as Error).message },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

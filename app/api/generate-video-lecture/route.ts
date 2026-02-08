@@ -342,10 +342,10 @@ Generate the complete video lecture JSON now with natural teacher narration and 
     }));
 
     console.log(
-      `✅ Video lecture script generated: ${lectureData.slides.length} slides`
+      `✅ Video lecture script generated: ${lectureData.slides.length} slides`,
     );
     console.log(
-      `📐 Total drawings: ${lectureData.slides.reduce((sum: number, s: any) => sum + (s.drawings?.length || 0), 0)}`
+      `📐 Total drawings: ${lectureData.slides.reduce((sum: number, s: any) => sum + (s.drawings?.length || 0), 0)}`,
     );
 
     return new Response(JSON.stringify(lectureData), {
@@ -357,7 +357,7 @@ Generate the complete video lecture JSON now with natural teacher narration and 
       JSON.stringify({
         error: (error as Error).message || 'Failed to generate video lecture',
       }),
-      { status: 500, headers: { 'Content-Type': 'application/json' } }
+      { status: 500, headers: { 'Content-Type': 'application/json' } },
     );
   }
 }
